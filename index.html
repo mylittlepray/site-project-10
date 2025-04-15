@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="pt-5">
+    <nav class="navbar navbar-expand-lg bg-black navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand p-2" href="#">Vue.js</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#basics">Основы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tasks">Задачи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#forms">Формы</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="app" class="container">
+        <header class="row mb-4 p-4">
+            <h1 class="col-12 text-center p-2">Практическая работа с Vue.js</h1>
+            <p class="col-12 text-center">Освойте основы работы с Vue.js, научитесь связывать данные, обрабатывать события и использовать директивы.</p>
+        </header>
+
+        <section class="row mb-4" id="basics">
+            <div class="col-12">
+                <h2 p-2>Основы Vue.js</h2>
+                <div id="app">
+                    <h3>{{ message }}</h3>
+                    <button @click="message = 'Сообщение изменено!'" class="btn btn-primary">Изменить</button>
+                    <input v-model="message" class="form-control mt-3" placeholder="Введите текст" />
+                    <p class="mt-2">Вы ввели: {{ message }}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="row mb-4" id="tasks">
+            <div class="col-12">
+                <h2>Список задач</h2>
+                <ul>
+                    <li v-for="(task, index) in tasks" :key="index">{{ index + 1 }}. {{ task }}</li>
+                </ul>
+                <button @click="visible = !visible" class="btn btn-secondary mt-3">
+                    {{ visible ? 'Скрыть текст' : 'Показать текст' }}
+                </button>
+                <p v-if="visible" class="mt-2">Этот текст отображается только при включённом флаге.</p>
+            </div>
+        </section>
+
+        <section class="row mb-4" id="forms">
+            <div class="col-12">
+                <h2>Форма обратной связи</h2>
+                <form @submit.prevent="submitForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Ваше имя</label>
+                        <input type="text" v-model="form.name" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Ваш Email</label>
+                        <input type="email" v-model="form.email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea v-model="form.message" class="form-control" id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Отправить сообщение</button>
+                </form>
+                <div v-if="submitted" class="mt-3 alert alert-success">
+                    <h4>Отправлено:</h4>
+                    <p><strong>Имя:</strong> {{ form.name }}</p>
+                    <p><strong>Email:</strong> {{ form.email }}</p>
+                    <p><strong>Сообщение:</strong> {{ form.message }}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="row mt-4">
+        <p class="col-12 text-center">&copy; 2025 Vue.js</p>
+    </footer>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
