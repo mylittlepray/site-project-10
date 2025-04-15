@@ -43,7 +43,7 @@
                 <h2 p-2>Основы Vue.js</h2>
                 <div id="app">
                     <h3>{{ message }}</h3>
-                    <button @click="message = 'Сообщение изменено!'" class="btn btn-primary">Изменить</button>
+                    <button @click="message = 'Сообщение изменено!'" class="btn btn-dark">Изменить</button>
                     <input v-model="message" class="form-control mt-3" placeholder="Введите текст" />
                     <p class="mt-2">Вы ввели: {{ message }}</p>
                 </div>
@@ -79,7 +79,7 @@
                         <label for="message" class="form-label">Сообщение</label>
                         <textarea v-model="form.message" class="form-control" id="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-success">Отправить сообщение</button>
+                    <button type="submit" class="btn btn-dark">Отправить сообщение</button>
                 </form>
                 <div v-if="submitted" class="mt-3 alert alert-success">
                     <h4>Отправлено:</h4>
@@ -90,9 +90,6 @@
             </div>
         </section>
     </div>
-
-
-
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
